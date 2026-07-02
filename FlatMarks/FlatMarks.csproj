@@ -1,0 +1,31 @@
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+  <PropertyGroup>
+    <Version>0.1.0.0</Version>
+    <Description>Flat 2D floor waymarks.</Description>
+    <Authors>Kako5555</Authors>
+    <PackageProjectUrl>https://github.com/kako5555/FlatMarks</PackageProjectUrl>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <IsPackable>false</IsPackable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 3D world-space overlay renderer. Verified latest stable on nuget.org: 1.0.10 (net10.0-windows7.0). -->
+    <PackageReference Include="Pictomancy" Version="1.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Glyph PNGs (A-D, 1-4), generated at dev time. Copied to output like WaymarkStudio does. -->
+    <Content Include="res\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <!-- Plugin icon (Dalamud convention: images/icon.png). -->
+    <Content Include="images\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+</Project>
