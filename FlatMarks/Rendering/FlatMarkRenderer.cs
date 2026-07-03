@@ -36,9 +36,12 @@ public sealed class FlatMarkRenderer : IDisposable
     public void Draw(ReadOnlySpan<WaymarkState> markers, Vector3 origin)
     {
         // Pictomancy composites on dispose of the returned list. Null-check is mandatory.
+        // OccludedAlpha=1 disables depth-based dimming, which stops markers shimmering where
+        // transparent particle VFX (dust/haze) perturb the sampled scene depth (common in instances).
+        var occludedAlpha = config.DimBehindWalls ? 0.35f : 1.0f;
         using var drawList = PctService.Draw(hints: new()
         {
-            DefaultParams = new() { OcclusionTolerance = 0.5f, OccludedAlpha = 0.35f },
+            DefaultParams = new() { OcclusionTolerance = 0.5f, OccludedAlpha = occludedAlpha },
         });
         if (drawList == null) return;
 

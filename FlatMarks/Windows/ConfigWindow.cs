@@ -269,6 +269,10 @@ public sealed class ConfigWindow : Window, IDisposable
         var dist = config.MaxDistance;
         if (ImGui.SliderFloat("Max draw distance", ref dist, 20f, 400f)) { config.MaxDistance = dist; changed = true; }
 
+        var dim = config.DimBehindWalls;
+        if (ImGui.Checkbox("Dim behind walls/objects", ref dim)) { config.DimBehindWalls = dim; changed = true; }
+        ImGui.TextDisabled("Turn OFF if markers shimmer near dust/particle effects (e.g. in instances).");
+
         if (changed) config.Save();
     }
 

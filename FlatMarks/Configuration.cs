@@ -53,6 +53,13 @@ public class Configuration : IPluginConfiguration
     public float HeightOffset { get; set; } = 0.05f;   // world units above the marker Position.Y
     public float MaxDistance { get; set; } = 200.0f;   // distance cull (yalms)
 
+    /// <summary>
+    /// Dim marker pixels that are behind scene geometry (occlusion). When on, Pictomancy samples the
+    /// scene depth per-pixel — which makes markers shimmer/warp where transparent particle VFX (dust,
+    /// haze) drift through, common in instances. Turn off to draw at full alpha (also shows through walls).
+    /// </summary>
+    public bool DimBehindWalls { get; set; } = true;
+
     // ---- Glyph ----
     public bool GlyphEnabled { get; set; } = true;
     public GlyphMode GlyphMode { get; set; } = GlyphMode.ProjectedImage;
@@ -85,6 +92,7 @@ public class Configuration : IPluginConfiguration
             OutlineThickness = OutlineThickness,
             HeightOffset = HeightOffset,
             MaxDistance = MaxDistance,
+            DimBehindWalls = DimBehindWalls,
             GlyphEnabled = GlyphEnabled,
             GlyphMode = (int)GlyphMode,
             GlyphScale = GlyphScale,
@@ -117,6 +125,7 @@ public class Configuration : IPluginConfiguration
             OutlineThickness = p.OutlineThickness;
             HeightOffset = p.HeightOffset;
             MaxDistance = p.MaxDistance;
+            DimBehindWalls = p.DimBehindWalls;
             GlyphEnabled = p.GlyphEnabled;
             GlyphMode = Enum.IsDefined(typeof(GlyphMode), p.GlyphMode) ? (GlyphMode)p.GlyphMode : GlyphMode;
             GlyphScale = p.GlyphScale;
@@ -142,6 +151,7 @@ public class Configuration : IPluginConfiguration
         OutlineThickness = 3.0f;
         HeightOffset = 0.05f;
         MaxDistance = 200.0f;
+        DimBehindWalls = true;
         GlyphEnabled = true;
         GlyphMode = GlyphMode.ProjectedImage;
         GlyphScale = 1.0f;
@@ -193,6 +203,7 @@ public class ConfigProfile
     public float OutlineThickness { get; set; } = 3.0f;
     public float HeightOffset { get; set; } = 0.05f;
     public float MaxDistance { get; set; } = 200.0f;
+    public bool DimBehindWalls { get; set; } = true;
     public bool GlyphEnabled { get; set; } = true;
     public int GlyphMode { get; set; }
     public float GlyphScale { get; set; } = 1.0f;

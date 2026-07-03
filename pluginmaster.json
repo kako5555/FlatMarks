@@ -3,7 +3,7 @@
     "Author": "Kako5555",
     "Name": "FlatMarks",
     "InternalName": "FlatMarks",
-    "AssemblyVersion": "0.1.0.1",
+    "AssemblyVersion": "0.1.0.2",
     "Description": "Renders the 8 field waymarks (A/B/C/D and 1/2/3/4) as flat, 2D markers lying on the floor instead of the 3D holographic pillars — like a raid-plan diagram, in-game. Markers follow uneven terrain and stairs. Optionally hides the native pillars (per waymark), and offers per-marker color, size, and opacity controls plus colorblind-friendly color schemes (protanopia, deuteranopia, tritanopia) you can save, import, and export.",
     "Punchline": "Flat, floor-projected waymarks.",
     "ApplicableVersion": "any",
